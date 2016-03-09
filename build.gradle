@@ -1,0 +1,40 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.0.0-beta6'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+ext{
+    minSdkVersion = 14
+    compileSdkVersion = 23
+    targetSdkVersion = compileSdkVersion
+    buildToolsVersion = '23.0.2'
+
+    // Define all dependencies in the base project, to unify & make it easy to update
+    junit = 'junit:junit:4.12'
+    supportV4 = 'com.android.support:support-v4:23.2.0'
+    appCompat = 'com.android.support:appcompat-v7:23.2.0'
+    rxLifecycle = 'com.trello:rxlifecycle:0.5.0'
+    rxLifecycleComponents = 'com.trello:rxlifecycle-components:0.5.0'
+    mosbyMvp = 'com.hannesdorfmann.mosby:mvp:2.0.1'
+    mosbyMvpViewState = 'com.hannesdorfmann.mosby:viewstate:2.0.1'
+
+}
