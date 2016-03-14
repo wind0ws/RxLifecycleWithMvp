@@ -11,7 +11,7 @@ import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 /**
- * An Activity that uses an {@link MvpPresenter} to implement a Model-View-Presenter
+ * An Activity that uses an {mylink MvpPresenter} to implement a Model-View-Presenter
  * architecture.
  *
  * @author Hannes Dorfmann
@@ -76,7 +76,7 @@ public abstract class RxMvpAppCompatActivity<V extends MvpView, P extends MvpPre
     /**
      * Instantiate a presenter instance
      *
-     * @return The {@link MvpPresenter} for this view
+     * @return The {mylink MvpPresenter} for this view
      */
     @NonNull
     public abstract P createPresenter();
@@ -93,7 +93,7 @@ public abstract class RxMvpAppCompatActivity<V extends MvpView, P extends MvpPre
      * Only override this method if you really know what you are doing.
      * </p>
      *
-     * @return {@link ActivityMvpDelegateImpl}
+     * @return {mylink ActivityMvpDelegateImpl}
      */
     @NonNull protected ActivityMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
@@ -132,8 +132,8 @@ public abstract class RxMvpAppCompatActivity<V extends MvpView, P extends MvpPre
     }
 
     /**
-     * Internally used by Mosby. Use {@link #onRetainNonMosbyCustomNonConfigurationInstance()} and
-     * {@link #getNonMosbyLastCustomNonConfigurationInstance()}
+     * Internally used by Mosby. Use {mylink #onRetainNonMosbyCustomNonConfigurationInstance()} and
+     * {mylink #getNonMosbyLastCustomNonConfigurationInstance()}
      */
     @Override public final Object onRetainCustomNonConfigurationInstance() {
         return getMvpDelegate().onRetainCustomNonConfigurationInstance();

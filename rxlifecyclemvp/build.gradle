@@ -1,14 +1,45 @@
+//apply plugin: 'com.android.library'
+//
+//android {
+//    compileSdkVersion 23
+//    buildToolsVersion "23.0.2"
+//
+//    defaultConfig {
+//        minSdkVersion 16
+//        targetSdkVersion 23
+//        versionCode 1
+//        versionName "1.0"
+//    }
+//    buildTypes {
+//        release {
+//            minifyEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//        }
+//    }
+//}
+//
+//dependencies {
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+//    testCompile rootProject.ext.junit
+//    compile rootProject.ext.appCompat
+//    compile rootProject.ext.rxLifecycle
+//    compile rootProject.ext.rxLifecycleComponents
+//    compile rootProject.ext.mosbyMvp
+//}
 apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+// 这个version是区分library版本的，因此当我们需要更新library时记得修改这个version
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 23
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "1.0"
+        versionName "0.5.0"
     }
     buildTypes {
         release {
@@ -18,6 +49,8 @@ android {
     }
 }
 
+apply from: "https://raw.githubusercontent.com/xiaopansky/android-library-publish-to-jcenter/master/bintrayUpload.gradle"
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile rootProject.ext.junit
@@ -26,3 +59,25 @@ dependencies {
     compile rootProject.ext.rxLifecycleComponents
     compile rootProject.ext.mosbyMvp
 }
+
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+
+//task javadoc(type: Javadoc) {
+//    description "app javadocs"
+//    source = android.libraryVariants["release"].javaCompile.source
+//    ext.androidJar = "${android.sdkDirectory}/platforms/${android.compileSdkVersion}/android.jar"
+//    classpath = files(android.libraryVariants["release"].javaCompile.classpath.files) + files(ext.androidJar)
+//    options.links("http://docs.oracle.com/javase/7/docs/api/");
+//    options.links("http://d.android.com/reference/");
+//    exclude '**/BuildConfig.java'
+//    exclude '**/R.java'
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+

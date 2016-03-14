@@ -13,7 +13,7 @@ import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import threshold.rxlifecyclewithmvp.lce.RxMvpLceAppCompatActivity;
 
 /**
- * A {@link RxMvpLceAppCompatActivity} with {@link ViewState} support.
+ * A {mylink RxMvpLceAppCompatActivity} with {mylink ViewState} support.
  *
  * @author Hannes Dorfmann
  * @since 1.0.0
@@ -93,9 +93,9 @@ public abstract class RxMvpLceViewStateAppCompatActivity<CV extends View, M, V e
     public abstract LceViewState<M, V> createViewState();
 
     /**
-     * Get the data that has been set before in {@link #setData(Object)}
+     * Get the data that has been set before in {mylink #setData(Object)}
      * <p>
-     * <b>It's necessary to return the same data as set before to ensure that {@link ViewState} works
+     * <b>It's necessary to return the same data as set before to ensure that {mylink ViewState} works
      * correctly</b>
      * </p>
      *

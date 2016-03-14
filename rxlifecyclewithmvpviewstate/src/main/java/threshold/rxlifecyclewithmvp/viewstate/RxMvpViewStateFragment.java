@@ -1,8 +1,5 @@
 package threshold.rxlifecyclewithmvp.viewstate;
 
-import android.os.Bundle;
-import android.view.View;
-
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpViewStateDelegateCallback;
@@ -13,12 +10,12 @@ import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import threshold.rxlifecyclewithmvp.RxMvpFragment;
 
 /**
- * This is a enhancement of {@link RxMvpFragment} that introduces the
- * support of {@link com.hannesdorfmann.mosby.mvp.viewstate.ViewState}.
+ * This is a enhancement of {mylink RxMvpFragment} that introduces the
+ * support of {mylink com.hannesdorfmann.mosby.mvp.viewstate.ViewState}.
  * <p>
  * You can change the behaviour of what to do if the viewstate is empty (usually if the fragment
  * creates the viewState for the very first time and therefore has no state / data to restore) by
- * overriding {@link #onNewViewStateInstance()}
+ * overriding {mylink #onNewViewStateInstance()}
  * </p>
  *
  * @author Hannes Dorfmann
@@ -28,7 +25,7 @@ public abstract class RxMvpViewStateFragment<V extends MvpView, P extends MvpPre
         extends RxMvpFragment<V, P> implements BaseMvpViewStateDelegateCallback<V, P> {
 
     /**
-     * The viewstate will be instantiated by calling {@link #createViewState()} in {@link
+     * The viewstate will be instantiated by calling {mylink #createViewState()} in {mylink
      * #onViewCreated(View, Bundle)}. Don't instantiate it by hand.
      */
     protected ViewState<V> viewState;

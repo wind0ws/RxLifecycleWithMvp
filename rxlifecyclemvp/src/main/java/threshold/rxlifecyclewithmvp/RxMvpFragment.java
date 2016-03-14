@@ -15,7 +15,7 @@ import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegateImpl;
 import com.trello.rxlifecycle.components.support.RxFragment;
 
 /**
- * A Fragment that uses an {@link MvpPresenter} to implement a Model-View-Presenter
+ * A Fragment that uses an {mylink MvpPresenter} to implement a Model-View-Presenter
  * architecture
  *
  * @author Hannes Dorfmann
@@ -26,14 +26,14 @@ public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>
     protected FragmentMvpDelegate<V, P> mvpDelegate;
 
     /**
-     * The presenter for this view. Will be instantiated with {@link #createPresenter()}
+     * The presenter for this view. Will be instantiated with {mylink #createPresenter()}
      */
     protected P presenter;
 
     /**
      * Creates a new presenter instance, if needed. Will reuse the previous presenter instance if
-     * {@link #setRetainInstance(boolean)} is set to true. This method will be called from
-     * {@link #onViewCreated(View, Bundle)}
+     * {mylink #setRetainInstance(boolean)} is set to true. This method will be called from
+     * {mylink #onViewCreated(View, Bundle)}
      */
     public abstract P createPresenter();
 
@@ -50,7 +50,7 @@ public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>
      * Only override this method if you really know what you are doing.
      * </p>
      *
-     * @return {@link FragmentMvpDelegateImpl}
+     * @return {mylink FragmentMvpDelegateImpl}
      */
     @NonNull
     protected FragmentMvpDelegate<V, P> getMvpDelegate() {

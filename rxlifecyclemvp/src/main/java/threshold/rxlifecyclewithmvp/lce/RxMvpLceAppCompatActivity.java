@@ -11,7 +11,7 @@ import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import threshold.rxlifecyclewithmvp.RxMvpAppCompatActivity;
 
 /**
- * A {@link RxMvpAppCompatActivity} that implements {@link MvpLceView} which gives you 3 options:
+ * A {mylink RxMvpAppCompatActivity} that implements {mylink MvpLceView} which gives you 3 options:
  * <ul>
  * <li>Display a loading view: A view with <b>R.id.loadingView</b> must be specified in your
  * inflated xml layout</li>
@@ -26,11 +26,11 @@ import threshold.rxlifecyclewithmvp.RxMvpAppCompatActivity;
  * android view widget like ListView, RecyclerView, ScrollView or a simple layout like Framelayout
  * etc. (everything that extends from android.view.View)
  * @param <M> The underlying data model that will be displayed with this view
- * @param <V> The View interface that must be implemented by this view. You can use {@link
+ * @param <V> The View interface that must be implemented by this view. You can use {mylink
  * MvpLceView}, but if you want to add more methods you have to provide your own view interface
  * that
- * extends from {@link MvpLceView}
- * @param <P> The type of the Presenter. Must extend from {@link MvpPresenter}
+ * extends from {mylink MvpLceView}
+ * @param <P> The type of the Presenter. Must extend from {mylink MvpPresenter}
  */
 public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends MvpLceView<M>, P extends MvpPresenter<V>>
         extends RxMvpAppCompatActivity<V, P> implements MvpLceView<M> {
@@ -107,7 +107,7 @@ public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends Mv
     }
 
     /**
-     * Get the error message for a certain Exception that will be shown on {@link
+     * Get the error message for a certain Exception that will be shown on {mylink
      * #showError(Throwable, boolean)}
      */
     protected abstract String getErrorMessage(Throwable e, boolean pullToRefresh);

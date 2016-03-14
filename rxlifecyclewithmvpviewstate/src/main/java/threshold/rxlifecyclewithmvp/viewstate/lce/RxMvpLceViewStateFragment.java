@@ -1,6 +1,5 @@
 package threshold.rxlifecyclewithmvp.viewstate.lce;
 
-import android.os.Bundle;
 import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -14,7 +13,7 @@ import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import threshold.rxlifecyclewithmvp.lce.RxMvpLceFragment;
 
 /**
- * A {@link RxMvpLceFragment} with {@link ViewState} support.
+ * A {mylink RxMvpLceFragment} with {mylink ViewState} support.
  *
  * @author Hannes Dorfmann
  * @since 1.0.0
@@ -24,7 +23,7 @@ public abstract class RxMvpLceViewStateFragment<CV extends View, M, V extends Mv
         BaseMvpViewStateDelegateCallback<V, P> {
 
     /**
-     * The viewstate will be instantiated by calling {@link #createViewState()} in {@link
+     * The viewstate will be instantiated by calling {mylink #createViewState()} in {mylink
      * #onViewCreated(View, Bundle)}. Don't instantiate it by hand.
      */
     protected LceViewState<M, V> viewState;
@@ -95,9 +94,9 @@ public abstract class RxMvpLceViewStateFragment<CV extends View, M, V extends Mv
     }
 
     /**
-     * Get the data that has been set before in {@link #setData(Object)}
+     * Get the data that has been set before in {mylink #setData(Object)}
      * <p>
-     * <b>It's necessary to return the same data as set before to ensure that {@link ViewState} works
+     * <b>It's necessary to return the same data as set before to ensure that {mylink ViewState} works
      * correctly</b>
      * </p>
      *
