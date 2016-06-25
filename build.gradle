@@ -5,10 +5,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.0.0-beta6'
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.2'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.3'
-        //classpath 'com.github.dcendents:android-maven-plugin:1.2'
+        classpath "com.android.tools.build:gradle:2.1.2"
+        classpath "com.novoda:bintray-release:0.3.4" //添加
+//        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:1.6"
+//        classpath "com.github.dcendents:android-maven-gradle-plugin:1.3"
+        //classpath "com.github.dcendents:android-maven-plugin:1.2"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -24,19 +25,40 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
+//def rxLifeWithMvp = "0.5.0"
+def rxLifeCycleVersion = "0.6.1"
+def supportVersion = "23.4.0"
+def mosbyMvpVersion = "2.0.1"
+
 ext{
+
+    rxLifeWithMvpVersion = "0.6.1"
+
+    //-------- bintray config -----------
+    userOrg = "wind0ws"//bintray.com用户名
+    groupId = "com.threshold"//jcenter上的路径
+    publishVersion = rxLifeWithMvpVersion//版本号
+    desc = "It is a mosby mvp with RxLife Library"//描述，不重要
+    website = "https://github.com/wind0ws/RxLifecycleWithMvp"//网站，不重要
+    uploadName = "RxlifecycleWithMvp" //上传在bintray的文件夹
+    licences = ["Apache-2.0"]
+    // -------------
+
+
+
+
     minSdkVersion = 14
     compileSdkVersion = 23
     targetSdkVersion = compileSdkVersion
-    buildToolsVersion = '23.0.2'
+    buildToolsVersion = "23.0.3"
 
     // Define all dependencies in the base project, to unify & make it easy to update
-    junit = 'junit:junit:4.12'
-    supportV4 = 'com.android.support:support-v4:23.2.0'
-    appCompat = 'com.android.support:appcompat-v7:23.2.0'
-    rxLifecycle = 'com.trello:rxlifecycle:0.5.0'
-    rxLifecycleComponents = 'com.trello:rxlifecycle-components:0.5.0'
-    mosbyMvp = 'com.hannesdorfmann.mosby:mvp:2.0.1'
-    mosbyMvpViewState = 'com.hannesdorfmann.mosby:viewstate:2.0.1'
+    junit = "junit:junit:4.12"
+    supportV4 = "com.android.support:support-v4:${supportVersion}"
+    appCompat = "com.android.support:appcompat-v7:${supportVersion}"
+    rxLifecycle = "com.trello:rxlifecycle:${rxLifeCycleVersion}"
+    rxLifecycleComponents = "com.trello:rxlifecycle-components:${rxLifeCycleVersion}"
+    mosbyMvp = "com.hannesdorfmann.mosby:mvp:${mosbyMvpVersion}"
+    mosbyMvpViewState = "com.hannesdorfmann.mosby:viewstate:${mosbyMvpVersion}"
 
 }

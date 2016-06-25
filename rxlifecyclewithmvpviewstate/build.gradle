@@ -1,6 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.github.dcendents.android-maven'
-apply plugin: 'com.jfrog.bintray'
+apply plugin: 'com.novoda.bintray-release'//添加
+//apply plugin: 'com.github.dcendents.android-maven'
+//apply plugin: 'com.jfrog.bintray'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -10,7 +11,7 @@ android {
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
-        versionName "0.5.0"
+        versionName rootProject.ext.rxLifeWithMvpVersion
     }
     buildTypes {
         release {
@@ -20,7 +21,7 @@ android {
     }
 }
 
-apply from: "https://raw.githubusercontent.com/xiaopansky/android-library-publish-to-jcenter/master/bintrayUpload.gradle"
+//apply from: "https://raw.githubusercontent.com/xiaopansky/android-library-publish-to-jcenter/master/bintrayUpload.gradle"
 
 
 dependencies {
@@ -29,4 +30,17 @@ dependencies {
     compile rootProject.ext.appCompat
     compile rootProject.ext.mosbyMvpViewState
     compile project(':rxlifecyclemvp')
+}
+
+
+//添加
+publish {
+    artifactId = 'rxlifecyclewithmvpviewstate'//项目名称
+    userOrg = rootProject.userOrg
+    groupId = rootProject.groupId
+    uploadName = rootProject.uploadName
+    publishVersion = rootProject.publishVersion
+    desc = rootProject.description
+    website = rootProject.website
+    licences = rootProject.licences
 }

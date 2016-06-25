@@ -105,6 +105,8 @@ public abstract class RxMvpLceFragment<CV extends View, M, V extends MvpLceView<
     /**
      * Get the error message for a certain Exception that will be shown on {mylink
      * #showError(Throwable, boolean)}
+     * @param e throwable
+     * @param pullToRefresh isPullToRefresh
      */
     protected abstract String getErrorMessage(Throwable e, boolean pullToRefresh);
 
@@ -112,6 +114,7 @@ public abstract class RxMvpLceFragment<CV extends View, M, V extends MvpLceView<
      * The default behaviour is to display a toast message as light error (i.e. pull-to-refresh
      * error).
      * Override this method if you want to display the light error in another way (like crouton).
+     * @param msg  Message
      */
     protected void showLightError(String msg) {
         if (getActivity() != null) {

@@ -11,7 +11,7 @@ import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import threshold.rxlifecyclewithmvp.RxMvpAppCompatActivity;
 
 /**
- * A {mylink RxMvpAppCompatActivity} that implements {mylink MvpLceView} which gives you 3 options:
+ * A {@link RxMvpAppCompatActivity} that implements {@link MvpLceView} which gives you 3 options:
  * <ul>
  * <li>Display a loading view: A view with <b>R.id.loadingView</b> must be specified in your
  * inflated xml layout</li>
@@ -26,11 +26,11 @@ import threshold.rxlifecyclewithmvp.RxMvpAppCompatActivity;
  * android view widget like ListView, RecyclerView, ScrollView or a simple layout like Framelayout
  * etc. (everything that extends from android.view.View)
  * @param <M> The underlying data model that will be displayed with this view
- * @param <V> The View interface that must be implemented by this view. You can use {mylink
+ * @param <V> The View interface that must be implemented by this view. You can use {@link
  * MvpLceView}, but if you want to add more methods you have to provide your own view interface
  * that
- * extends from {mylink MvpLceView}
- * @param <P> The type of the Presenter. Must extend from {mylink MvpPresenter}
+ * extends from {@link MvpLceView}
+ * @param <P> The type of the Presenter. Must extend from {@link MvpPresenter}
  */
 public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends MvpLceView<M>, P extends MvpPresenter<V>>
         extends RxMvpAppCompatActivity<V, P> implements MvpLceView<M> {
@@ -107,8 +107,10 @@ public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends Mv
     }
 
     /**
-     * Get the error message for a certain Exception that will be shown on {mylink
+     * Get the error message for a certain Exception that will be shown on {@link
      * #showError(Throwable, boolean)}
+     * @param e throwable
+     * @param pullToRefresh  isPullToRefresh
      */
     protected abstract String getErrorMessage(Throwable e, boolean pullToRefresh);
 
@@ -116,6 +118,7 @@ public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends Mv
      * The default behaviour is to display a toast message as light error (i.e. pull-to-refresh
      * error).
      * Override this method if you want to display the light error in another way (like crouton).
+     * @param msg Message
      */
     protected void showLightError(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
