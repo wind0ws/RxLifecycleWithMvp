@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">RxLifecycleWithMvp</string>
+    <string name="error_on_request">Error on request</string>
+    <string name="connect_failed">Connect Failed</string>
+    <string name="request_timeout">Connect Timeout</string>
 </resources>

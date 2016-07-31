@@ -1,14 +1,30 @@
+/*
+ * Copyright 2015 Hannes Dorfmann.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package threshold.rxlifecyclewithmvp;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateCallback;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl;
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 /**
  * An Activity that uses an {@link MvpPresenter} to implement a Model-View-Presenter
@@ -18,7 +34,8 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
  * @since 1.0.0
  */
 public abstract class RxMvpAppCompatActivity<V extends MvpView, P extends MvpPresenter<V>>
-        extends RxAppCompatActivity implements ActivityMvpDelegateCallback<V, P>, MvpView {
+        extends AppCompatActivity implements ActivityMvpDelegateCallback<V, P>, MvpView {
+
     protected ActivityMvpDelegate mvpDelegate;
     protected P presenter;
     protected boolean retainInstance;
@@ -78,8 +95,7 @@ public abstract class RxMvpAppCompatActivity<V extends MvpView, P extends MvpPre
      *
      * @return The {@link MvpPresenter} for this view
      */
-    @NonNull
-    public abstract P createPresenter();
+    @NonNull public abstract P createPresenter();
 
     /**
      * Get the mvp delegate. This is internally used for creating presenter, attaching and detaching
@@ -95,7 +111,7 @@ public abstract class RxMvpAppCompatActivity<V extends MvpView, P extends MvpPre
      *
      * @return {@link ActivityMvpDelegateImpl}
      */
-    @NonNull protected ActivityMvpDelegate<V, P> getMvpDelegate() {
+    @NonNull @SuppressWarnings("all") protected ActivityMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new ActivityMvpDelegateImpl(this);
         }
@@ -111,7 +127,7 @@ public abstract class RxMvpAppCompatActivity<V extends MvpView, P extends MvpPre
         this.presenter = presenter;
     }
 
-    @NonNull @Override public V getMvpView() {
+    @NonNull @SuppressWarnings("all") @Override public V getMvpView() {
         return (V) this;
     }
 

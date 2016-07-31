@@ -1,11 +1,27 @@
+/*
+ * Copyright 2015 Hannes Dorfmann.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package threshold.rxlifecyclewithmvp.viewstate.lce;
 
 import android.view.View;
-
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateCallback;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateImpl;
+import com.hannesdorfmann.mosby.mvp.lce.MvpLceActivity;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
@@ -13,7 +29,7 @@ import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import threshold.rxlifecyclewithmvp.lce.RxMvpLceAppCompatActivity;
 
 /**
- * A {mylink RxMvpLceAppCompatActivity} with {mylink ViewState} support.
+ * A {@link MvpLceActivity} with {@link ViewState} support.
  *
  * @author Hannes Dorfmann
  * @since 1.0.0
@@ -25,6 +41,7 @@ public abstract class RxMvpLceViewStateAppCompatActivity<CV extends View, M, V e
     protected LceViewState<M, V> viewState;
     protected boolean restoringViewState = false;
 
+    @SuppressWarnings("all")
     @Override protected ActivityMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new ActivityMvpViewStateDelegateImpl<>(this);
@@ -90,12 +107,13 @@ public abstract class RxMvpLceViewStateAppCompatActivity<CV extends View, M, V e
      *
      * @return a new ViewState
      */
+    @SuppressWarnings("all")
     public abstract LceViewState<M, V> createViewState();
 
     /**
-     * Get the data that has been set before in {mylink #setData(Object)}
+     * Get the data that has been set before in {@link #setData(Object)}
      * <p>
-     * <b>It's necessary to return the same data as set before to ensure that {mylink ViewState} works
+     * <b>It's necessary to return the same data as set before to ensure that {@link ViewState} works
      * correctly</b>
      * </p>
      *

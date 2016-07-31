@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-    compileSdkVersion 23
+    compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "threshold.rxlifecyclewithmvp.sample"
         minSdkVersion 16
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName "1.0"
     }
@@ -22,5 +23,43 @@ android {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile rootProject.ext.junit
+    compile 'com.android.support:support-v4:24.1.1'
     compile rootProject.ext.appCompat
+    compile rootProject.ext.supportDesign
+    compile rootProject.ext.cardView
+    compile rootProject.ext.recyclerView
+    compile rootProject.ext.supportAnnotations
+    //Dagger2：dependency inject
+    // provided 'javax.annotation:javax.annotation-api:1.2'
+    provided rootProject.ext.javaxAnnotation
+    apt rootProject.ext.daggerCompiler
+    compile rootProject.ext.dagger
+    // butterKnife
+    compile rootProject.ext.butterKnife
+    apt rootProject.ext.butterKnifeCompiler
+    //logger
+    compile rootProject.ext.logger
+    compile rootProject.ext.rxJava
+    compile(rootProject.ext.rxAndroid) {
+        exclude group: 'io.reactivex', module: 'rxjava'
+    }
+    compile(rootProject.ext.rxBinding){
+        exclude group: 'io.reactivex', module: 'rxjava'
+        exclude group: 'io.reactivex', module: 'rxandroid'
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    compile(rootProject.ext.rxLifecycle){
+        exclude group: 'io.reactivex', module: 'rxjava'
+        exclude group: 'com.jakewharton.rxbinding',module: 'rxbinding'
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    compile(rootProject.ext.rxLifecycleComponents){
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'io.reactivex', module: 'rxjava'
+    }
+    compile(rootProject.ext.mosbyMvp){
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+    }
+    compile rootProject.ext.mosbyMvpViewState
+    compile project(path: ':rxlifecyclewithmvpviewstate')
 }

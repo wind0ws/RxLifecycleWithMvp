@@ -1,3 +1,19 @@
+/*
+ * Copyright 2015 Hannes Dorfmann.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package threshold.rxlifecyclewithmvp.lce;
 
 import android.os.Bundle;
@@ -6,15 +22,15 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.hannesdorfmann.mosby.mvp.MvpFragment;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.LceAnimator;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 
-import threshold.rxlifecyclewithmvp.RxMvpFragment;
+import threshold.rxlifecyclewithmvp.R;
 
 /**
- * A {mylink RxMvpFragment} that implements {mylink MvpLceView} which gives you 3 options:
+ * A {@link MvpFragment} that implements {@link MvpLceView} which gives you 3 options:
  * <ul>
  * <li>Display a loading view: A view with <b>R.id.loadingView</b> must be specified in your
  * inflated xml layout</li>
@@ -29,26 +45,27 @@ import threshold.rxlifecyclewithmvp.RxMvpFragment;
  * android view widget like ListView, RecyclerView, ScrollView or a simple layout like Framelayout
  * etc. (everything that extends from android.view.View)
  * @param <M> The underlying data model that will be displayed with this view
- * @param <V> The View interface that must be implemented by this view. You can use {mylink MvpLceView},
- *          but if you want to add more methods you have to provide your own view interface that extends from {mylink MvpLceView}
- * @param <P> The type of the Presenter. Must extend from {mylink MvpPresenter}
+ * @param <V> The View interface that must be implemented by this view. You can use {@link
+ * MvpLceView}, but if you want to add more methods you have to provide your own view interface
+ * that
+ * extends from {@link MvpLceView}
+ * @param <P> The type of the Presenter. Must extend from {@link MvpPresenter}
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
 public abstract class RxMvpLceFragment<CV extends View, M, V extends MvpLceView<M>, P extends MvpPresenter<V>>
-        extends RxMvpFragment<V, P> implements MvpLceView<M> {
+        extends MvpFragment<V, P> implements MvpLceView<M> {
 
     protected View loadingView;
     protected CV contentView;
     protected TextView errorView;
 
-    @CallSuper
-    @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+    @SuppressWarnings("all") @CallSuper @Override public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        loadingView = view.findViewById(com.hannesdorfmann.mosby.mvp.R.id.loadingView);
-        contentView = (CV) view.findViewById(com.hannesdorfmann.mosby.mvp.R.id.contentView);
-        errorView = (TextView) view.findViewById(com.hannesdorfmann.mosby.mvp.R.id.errorView);
+        loadingView = view.findViewById(R.id.loadingView);
+        contentView = (CV) view.findViewById(R.id.contentView);
+        errorView = (TextView) view.findViewById(R.id.errorView);
 
         if (loadingView == null) {
             throw new NullPointerException(
@@ -103,10 +120,8 @@ public abstract class RxMvpLceFragment<CV extends View, M, V extends MvpLceView<
     }
 
     /**
-     * Get the error message for a certain Exception that will be shown on {mylink
+     * Get the error message for a certain Exception that will be shown on {@link
      * #showError(Throwable, boolean)}
-     * @param e throwable
-     * @param pullToRefresh isPullToRefresh
      */
     protected abstract String getErrorMessage(Throwable e, boolean pullToRefresh);
 
@@ -114,7 +129,6 @@ public abstract class RxMvpLceFragment<CV extends View, M, V extends MvpLceView<
      * The default behaviour is to display a toast message as light error (i.e. pull-to-refresh
      * error).
      * Override this method if you want to display the light error in another way (like crouton).
-     * @param msg  Message
      */
     protected void showLightError(String msg) {
         if (getActivity() != null) {

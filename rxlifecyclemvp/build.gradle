@@ -1,12 +1,12 @@
 //apply plugin: 'com.android.library'
 //
 //android {
-//    compileSdkVersion 23
-//    buildToolsVersion "23.0.2"
+//    compileSdkVersion 24
+//    buildToolsVersion "24.0.1"
 //
 //    defaultConfig {
 //        minSdkVersion 16
-//        targetSdkVersion 23
+//        targetSdkVersion 24
 //        versionCode 1
 //        versionName "1.0"
 //    }
@@ -56,10 +56,10 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile rootProject.ext.junit
-    compile rootProject.ext.appCompat
-    compile rootProject.ext.rxLifecycle
-    compile rootProject.ext.rxLifecycleComponents
-    compile rootProject.ext.mosbyMvp
+    provided rootProject.ext.appCompat
+    provided rootProject.ext.rxLifecycle
+    provided rootProject.ext.rxLifecycleComponents
+    provided rootProject.ext.mosbyMvp
 }
 
 //添加

@@ -1,3 +1,19 @@
+/*
+ * Copyright 2015 Hannes Dorfmann.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package threshold.rxlifecyclewithmvp;
 
 import android.app.Activity;
@@ -5,14 +21,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegateImpl;
-import com.trello.rxlifecycle.components.support.RxFragment;
+import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
+import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
 
 /**
  * A Fragment that uses an {@link MvpPresenter} to implement a Model-View-Presenter
@@ -21,8 +37,9 @@ import com.trello.rxlifecycle.components.support.RxFragment;
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
-public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>> extends RxFragment
+public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>> extends Fragment
         implements BaseMvpDelegateCallback<V, P>, MvpView {
+
     protected FragmentMvpDelegate<V, P> mvpDelegate;
 
     /**
@@ -35,7 +52,7 @@ public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>
      * {@link #setRetainInstance(boolean)} is set to true. This method will be called from
      * {@link #onViewCreated(View, Bundle)}
      */
-    public abstract P createPresenter();
+    @SuppressWarnings("all") public abstract P createPresenter();
 
     /**
      * * Get the mvp delegate. This is internally used for creating presenter, attaching and
@@ -52,8 +69,7 @@ public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>
      *
      * @return {@link FragmentMvpDelegateImpl}
      */
-    @NonNull
-    protected FragmentMvpDelegate<V, P> getMvpDelegate() {
+    @NonNull protected FragmentMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new FragmentMvpDelegateImpl<>(this);
         }
@@ -143,3 +159,4 @@ public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>
         getMvpDelegate().onSaveInstanceState(outState);
     }
 }
+

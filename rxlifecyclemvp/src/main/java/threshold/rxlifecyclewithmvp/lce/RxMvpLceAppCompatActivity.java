@@ -1,23 +1,41 @@
+/*
+ * Copyright 2015 Hannes Dorfmann.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package threshold.rxlifecyclewithmvp.lce;
 
 import android.support.annotation.CallSuper;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import com.hannesdorfmann.mosby.mvp.MvpActivity;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.LceAnimator;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
+
+import threshold.rxlifecyclewithmvp.R;
 import threshold.rxlifecyclewithmvp.RxMvpAppCompatActivity;
 
 /**
- * A {@link RxMvpAppCompatActivity} that implements {@link MvpLceView} which gives you 3 options:
+ * A {@link MvpActivity} that implements {@link MvpLceView} which gives you 3 options:
  * <ul>
  * <li>Display a loading view: A view with <b>R.id.loadingView</b> must be specified in your
  * inflated xml layout</li>
  * <li>Display a error view: A <b>TextView</b> with <b>R.id.errorView</b> must be declared in your
  * inflated xml layout</li>
- * <li>Display content view: A view with <b>R.id.contentView</b> must be specified in your
+ * <li>Display content view: A view witjh <b>R.id.contentView</b> must be specified in your
  * inflated
  * xml layout</li>
  * </ul>
@@ -39,12 +57,11 @@ public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends Mv
     protected CV contentView;
     protected TextView errorView;
 
-    @CallSuper
-    @Override public void onContentChanged() {
+    @SuppressWarnings("all") @CallSuper @Override public void onContentChanged() {
         super.onContentChanged();
-        loadingView = findViewById(com.hannesdorfmann.mosby.mvp.R.id.loadingView);
-        contentView = (CV) findViewById(com.hannesdorfmann.mosby.mvp.R.id.contentView);
-        errorView = (TextView) findViewById(com.hannesdorfmann.mosby.mvp.R.id.errorView);
+        loadingView = findViewById(R.id.loadingView);
+        contentView = (CV) findViewById(R.id.contentView);
+        errorView = (TextView) findViewById(R.id.errorView);
 
         if (loadingView == null) {
             throw new NullPointerException(
@@ -109,8 +126,6 @@ public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends Mv
     /**
      * Get the error message for a certain Exception that will be shown on {@link
      * #showError(Throwable, boolean)}
-     * @param e throwable
-     * @param pullToRefresh  isPullToRefresh
      */
     protected abstract String getErrorMessage(Throwable e, boolean pullToRefresh);
 
@@ -118,7 +133,6 @@ public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends Mv
      * The default behaviour is to display a toast message as light error (i.e. pull-to-refresh
      * error).
      * Override this method if you want to display the light error in another way (like crouton).
-     * @param msg Message
      */
     protected void showLightError(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
@@ -143,4 +157,5 @@ public abstract class RxMvpLceAppCompatActivity<CV extends View, M, V extends Mv
         LceAnimator.showErrorView(loadingView, contentView, errorView);
     }
 }
+
 

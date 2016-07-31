@@ -1,11 +1,28 @@
+/*
+ * Copyright 2015 Hannes Dorfmann.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package threshold.rxlifecyclewithmvp.viewstate.lce;
 
+import android.os.Bundle;
 import android.view.View;
-
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
-import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpViewStateDelegateCallback;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpViewStateDelegateImpl;
+import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
+import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpViewStateDelegateCallback;
+import com.hannesdorfmann.mosby.mvp.lce.MvpLceFragment;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
 import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
@@ -13,7 +30,7 @@ import com.hannesdorfmann.mosby.mvp.viewstate.lce.LceViewState;
 import threshold.rxlifecyclewithmvp.lce.RxMvpLceFragment;
 
 /**
- * A {mylink RxMvpLceFragment} with {mylink ViewState} support.
+ * A {@link MvpLceFragment} with {@link ViewState} support.
  *
  * @author Hannes Dorfmann
  * @since 1.0.0
@@ -23,7 +40,7 @@ public abstract class RxMvpLceViewStateFragment<CV extends View, M, V extends Mv
         BaseMvpViewStateDelegateCallback<V, P> {
 
     /**
-     * The viewstate will be instantiated by calling {mylink #createViewState()} in {mylink
+     * The viewstate will be instantiated by calling {@link #createViewState()} in {@link
      * #onViewCreated(View, Bundle)}. Don't instantiate it by hand.
      */
     protected LceViewState<M, V> viewState;
@@ -36,8 +53,10 @@ public abstract class RxMvpLceViewStateFragment<CV extends View, M, V extends Mv
     /**
      * Create the view state object of this class
      */
+    @SuppressWarnings("all")
     public abstract LceViewState<M, V> createViewState();
 
+    @SuppressWarnings("all")
     @Override protected FragmentMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new FragmentMvpViewStateDelegateImpl<V, P>(this);
@@ -46,6 +65,7 @@ public abstract class RxMvpLceViewStateFragment<CV extends View, M, V extends Mv
         return mvpDelegate;
     }
 
+    @SuppressWarnings("all")
     @Override public ViewState getViewState() {
         return viewState;
     }
@@ -94,9 +114,9 @@ public abstract class RxMvpLceViewStateFragment<CV extends View, M, V extends Mv
     }
 
     /**
-     * Get the data that has been set before in {mylink #setData(Object)}
+     * Get the data that has been set before in {@link #setData(Object)}
      * <p>
-     * <b>It's necessary to return the same data as set before to ensure that {mylink ViewState} works
+     * <b>It's necessary to return the same data as set before to ensure that {@link ViewState} works
      * correctly</b>
      * </p>
      *

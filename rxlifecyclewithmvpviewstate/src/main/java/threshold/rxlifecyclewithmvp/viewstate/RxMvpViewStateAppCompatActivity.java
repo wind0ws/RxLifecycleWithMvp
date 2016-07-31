@@ -1,3 +1,19 @@
+/*
+ * Copyright 2015 Hannes Dorfmann.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package threshold.rxlifecyclewithmvp.viewstate;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
@@ -6,16 +22,17 @@ import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateCallback;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpViewStateDelegateImpl;
 import com.hannesdorfmann.mosby.mvp.viewstate.ViewState;
+import com.hannesdorfmann.mosby.mvp.viewstate.RestorableViewState;
 
 import threshold.rxlifecyclewithmvp.RxMvpAppCompatActivity;
 
 /**
- * This is a enhancement of {mylink RxMvpAppCompatActivity} that introduces the
- * support of {mylink RestorableViewState}.
+ * This is a enhancement of {@link RxMvpAppCompatActivity} that introduces the
+ * support of {@link RestorableViewState}.
  * <p>
  * You can change the behaviour of what to do if the viewstate is empty (usually if the activity
  * creates the viewState for the very first time and therefore has no state / data to restore) by
- * overriding {mylink #onNewViewStateInstance()}
+ * overriding {@link #onNewViewStateInstance()}
  * </p>
  *
  * @author Hannes Dorfmann
@@ -31,7 +48,7 @@ public abstract class RxMvpViewStateAppCompatActivity<V extends MvpView, P exten
      */
     protected boolean restoringViewState = false;
 
-    @Override protected ActivityMvpDelegate<V, P> getMvpDelegate() {
+    @SuppressWarnings("all") @Override protected ActivityMvpDelegate<V, P> getMvpDelegate() {
         if (mvpDelegate == null) {
             mvpDelegate = new ActivityMvpViewStateDelegateImpl<>(this);
         }
@@ -63,5 +80,6 @@ public abstract class RxMvpViewStateAppCompatActivity<V extends MvpView, P exten
     /**
      * Creates the ViewState instance
      */
+    @SuppressWarnings("all")
     public abstract ViewState<V> createViewState();
 }
