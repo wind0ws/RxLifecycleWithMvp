@@ -39,7 +39,7 @@ def rxBindingVersion = "0.4.0"
 
 ext{
 
-    rxLifeWithMvpVersion = "0.6.2"
+    rxLifeWithMvpVersion = "0.6.3"
 
     //-------- bintray config -----------
     userOrg = "wind0ws"//bintray.com用户名

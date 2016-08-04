@@ -22,12 +22,14 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.hannesdorfmann.mosby.mvp.MvpFragment;
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.lce.LceAnimator;
 import com.hannesdorfmann.mosby.mvp.lce.MvpLceView;
 
 import threshold.rxlifecyclewithmvp.R;
+import threshold.rxlifecyclewithmvp.RxMvpFragment;
 
 /**
  * A {@link MvpFragment} that implements {@link MvpLceView} which gives you 3 options:
@@ -54,7 +56,7 @@ import threshold.rxlifecyclewithmvp.R;
  * @since 1.0.0
  */
 public abstract class RxMvpLceFragment<CV extends View, M, V extends MvpLceView<M>, P extends MvpPresenter<V>>
-        extends MvpFragment<V, P> implements MvpLceView<M> {
+        extends RxMvpFragment<V, P> implements MvpLceView<M> {
 
     protected View loadingView;
     protected CV contentView;

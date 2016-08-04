@@ -18,13 +18,13 @@ package threshold.rxlifecyclewithmvp;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateCallback;
 import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 /**
  * An Activity that uses an {@link MvpPresenter} to implement a Model-View-Presenter
@@ -34,7 +34,7 @@ import com.hannesdorfmann.mosby.mvp.delegate.ActivityMvpDelegateImpl;
  * @since 1.0.0
  */
 public abstract class RxMvpAppCompatActivity<V extends MvpView, P extends MvpPresenter<V>>
-        extends AppCompatActivity implements ActivityMvpDelegateCallback<V, P>, MvpView {
+        extends RxAppCompatActivity implements ActivityMvpDelegateCallback<V, P>, MvpView {
 
     protected ActivityMvpDelegate mvpDelegate;
     protected P presenter;

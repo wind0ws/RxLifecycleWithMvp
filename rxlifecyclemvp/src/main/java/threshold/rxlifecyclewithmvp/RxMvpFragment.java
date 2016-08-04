@@ -21,14 +21,14 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.Fragment;
 import android.view.View;
 
 import com.hannesdorfmann.mosby.mvp.MvpPresenter;
 import com.hannesdorfmann.mosby.mvp.MvpView;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegateImpl;
-import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
 import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
+import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegate;
+import com.hannesdorfmann.mosby.mvp.delegate.FragmentMvpDelegateImpl;
+import com.trello.rxlifecycle.components.support.RxFragment;
 
 /**
  * A Fragment that uses an {@link MvpPresenter} to implement a Model-View-Presenter
@@ -37,7 +37,7 @@ import com.hannesdorfmann.mosby.mvp.delegate.BaseMvpDelegateCallback;
  * @author Hannes Dorfmann
  * @since 1.0.0
  */
-public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>> extends Fragment
+public abstract class RxMvpFragment<V extends MvpView, P extends MvpPresenter<V>> extends RxFragment
         implements BaseMvpDelegateCallback<V, P>, MvpView {
 
     protected FragmentMvpDelegate<V, P> mvpDelegate;
